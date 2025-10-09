@@ -59,3 +59,22 @@ You will see files like:
     * .pub files → public keys
 
 * vi sshd_config → Opens the SSH configuration file in the vi text editor.
+
+## Changing the SSH Port
+
+Inside the sshd_config file, you’ll find a line like this:
+```
+Port 22
+```
+
+* This means the SSH service is listening on port 22 (the default port).
+
+* If you want to change it (for security or customization), you can modify it, for example:
+```
+Port 2222
+```
+
+After saving the file, restart the SSH service for changes to take effect:
+```
+sudo systemctl restart ssh
+```
