@@ -173,3 +173,48 @@ sudo systemctl restart ssh
 
 Now you can connect to your Linux machine using your root account in PuTTY.
 ***
+# Connecting to SSH Server Using Windows CMD or PowerShell
+
+You can also connect to your SSH server directly from Command Prompt (CMD) or PowerShell, without using PuTTY.
+
+## Step 1 — Open CMD or PowerShell
+
+Press Win + R, type:
+```
+cmd
+```
+
+or search for PowerShell, then press Enter.
+
+## Step 2 — Use the ssh Command
+
+The general syntax is:
+```
+ssh username@IP_address
+```
+
+For example:
+```
+ssh root@192.168.56.10
+```
+
+Then you’ll be asked for the password:
+```
+root@192.168.56.10's password:
+```
+
+## Explanation:
+
+* `ssh` → Command to start an SSH session.
+
+* `root` → The username you want to log in with.
+
+* `192.168.56.10` → The IP address of your Linux system.
+
+## If You Changed the Port
+
+If your SSH server is running on a different port (for example `2222`), you can specify it like this:
+```
+ssh -p 2222 root@192.168.56.10
+```
+***
