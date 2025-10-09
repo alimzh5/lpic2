@@ -78,3 +78,33 @@ After saving the file, restart the SSH service for changes to take effect:
 ```
 sudo systemctl restart ssh
 ```
+***
+# Verifying SSH Service Listening Port
+```
+# Check if SSH is listening on port 22
+netstat -ntulp | grep :22
+```
+## Explanation:
+
+* netstat → Shows network connections, routing tables, and listening ports.
+
+* -n → Displays addresses and port numbers in numeric form.
+
+* -t → Shows TCP connections.
+
+* -u → Shows UDP connections.
+
+* -l → Displays only listening ports.
+
+* -p → Shows the program (process) using the port.
+
+* | grep :22 → Filters output to show only lines containing “:22” (the SSH port).
+
+When you see output like this:
+```
+tcp   0  0 0.0.0.0:22     0.0.0.0:*     LISTEN   12239/sshd
+tcp6  0  0 :::22          :::*          LISTEN   12239/sshd
+```
+
+It means the SSH daemon (sshd) is actively listening on port 22 for both IPv4 and IPv6 connections.
+***
