@@ -108,3 +108,68 @@ tcp6  0  0 :::22          :::*          LISTEN   12239/sshd
 
 It means the SSH daemon (sshd) is actively listening on port 22 for both IPv4 and IPv6 connections.
 ***
+# Connecting to SSH Server Using PuTTY
+## Step 1 — Open PuTTY
+
+After installing PuTTY, open the program.
+You’ll see the PuTTY Configuration window.
+
+## Step 2 — Enter Connection Information
+```
+Host Name (or IP address): 192.168.56.10
+Port: 22
+Connection type: SSH
+```
+
+## Explanation:
+
+* Host Name / IP address → Enter the IP address of the Linux machine you want to connect to.
+
+* Port → The SSH port (default is 22, or the new port if you changed it).
+
+* Connection type → Select SSH.
+
+Then click Open to start the connection.
+
+## Step 3 — Login
+
+When the terminal opens, you’ll be asked to log in:
+```
+login as: root
+root@192.168.56.10's password:
+```
+
+Or you can log in with your normal user account.
+
+# Enable Root Login (if needed)
+
+By default, SSH does not allow root login for security reasons.
+If you want to log in directly as `root`, follow these steps:
+
+Open the SSH configuration file:
+```
+sudo vi /etc/ssh/sshd_config
+```
+
+Find the line:
+```
+PermitRootLogin prohibit-password
+```
+
+or it might be:
+```
+PermitRootLogin no
+```
+
+Change it to:
+```
+PermitRootLogin yes
+```
+
+Save and restart the SSH service:
+```
+sudo systemctl restart ssh
+```
+
+Now you can connect to your Linux machine using your root account in PuTTY.
+***
