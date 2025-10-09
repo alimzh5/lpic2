@@ -1,4 +1,4 @@
-#Network Interface Configuration Example (Static and Dynamic IP)
+# Network Interface Configuration Example (Static and Dynamic IP)
 ```
 # The primary network interface configuration
 
