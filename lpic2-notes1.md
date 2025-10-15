@@ -296,3 +296,60 @@ ping 192.168.56.10
 
 → Test connection.
 ***
+# DHCP Server Setup – Summary Notes
+## Purpose:
+
+To install and configure a DHCP server (Dynamic Host Configuration Protocol) on Ubuntu.
+DHCP automatically assigns IP addresses to network clients.
+
+## Step 1 — Search for DHCP Packages
+```
+apt-cache search server | grep dhcp
+```
+
+ This command lists all available DHCP-related packages.
+From the list, the main package we need is:
+```
+isc-dhcp-server – ISC DHCP server for automatic IP address assignment
+```
+## Step 2 — Check if it’s already installed
+```
+dpkg -l | grep isc-dhcp-server
+```
+
+If nothing appears, the package isn’t installed yet.
+
+## Step 3 — Install DHCP Server
+```
+sudo apt-get install isc-dhcp-server
+```
+
+This installs the ISC DHCP Server, a common DHCP implementation used on Linux systems.
+
+## After Installation
+
+Configuration files are located in:
+```
+/etc/dhcp/dhcpd.conf          ← main configuration
+/etc/default/isc-dhcp-server  ← default interface settings
+```
+## Step 4 — Start and Enable Service
+```
+sudo systemctl start isc-dhcp-server
+sudo systemctl enable isc-dhcp-server
+```
+## Key Notes
+Command	Purpose
+
+`apt-cache search dhcp`	Search available DHCP-related packages
+
+`dpkg -l`	grep dhcp`
+
+`apt-get install isc-dhcp-server`	Install the DHCP server
+
+`systemctl start isc-dhcp-server`	Start the DHCP service
+
+`systemctl status isc-dhcp-server`	Check if it’s running
+
+## Result:
+Your system is now ready to configure DHCP ranges and assign IPs automatically to clients.
