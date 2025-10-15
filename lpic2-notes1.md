@@ -218,3 +218,81 @@ If your SSH server is running on a different port (for example `2222`), you can 
 ssh -p 2222 root@192.168.56.10
 ```
 ***
+# Linux Network Configuration – Summary Notes
+## File Location:
+```
+/etc/network/interfaces
+```
+## Purpose:
+
+Defines how Linux network interfaces are configured (manually or automatically).
+
+## Key Directives:
+Directive	Meaning
+
+`auto <iface>`	Brings the interface up automatically at boot.
+
+`iface <iface> inet static`	Configures a static (manual) IP.
+
+`iface <iface> inet dhcp`	Configures dynamic IP (gets it from a DHCP server).
+
+`address`	Assigns an IP address.
+
+`netmask`	Defines the subnet mask.
+
+## Example Configuration:
+```
+# Loopback interface
+auto lo
+iface lo inet loopback
+
+# Main static network card
+auto enp0s3
+iface enp0s3 inet static
+    address 192.168.56.10
+    netmask 255.255.255.0
+
+# Alias interface (virtual IP on the same card)
+auto enp0s3:0
+iface enp0s3:0 inet static
+    address 192.168.56.100
+    netmask 255.255.255.0
+
+# Secondary adapter with DHCP
+auto enp0s8
+iface enp0s8 inet dhcp
+```
+
+## Notes:
+
+`lo` = loopback (localhost, 127.0.0.1)
+
+`enp0s3` = main adapter with static IP
+
+`enp0s3:0` = alias interface (adds an extra IP to the same NIC)
+
+`enp0s8` = gets IP automatically via DHCP
+
+## Apply Configuration:
+
+After editing the file, restart networking service:
+```
+sudo systemctl restart networking
+```
+
+or
+```
+sudo service networking restart
+```
+## Quick Check:
+```
+ip addr
+```
+
+→ View assigned IPs.
+```
+ping 192.168.56.10
+```
+
+→ Test connection.
+***
