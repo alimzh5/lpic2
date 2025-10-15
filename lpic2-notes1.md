@@ -228,17 +228,17 @@ ssh -p 2222 root@192.168.56.10
 Defines how Linux network interfaces are configured (manually or automatically).
 
 ## Key Directives:
-Directive	Meaning
+Directive ---------------------------------------- Meaning
 
-`auto <iface>`	Brings the interface up automatically at boot.
+`auto <iface>` ----------------------------------- Brings the interface up automatically at boot.
 
-`iface <iface> inet static`	Configures a static (manual) IP.
+`iface <iface> inet static` ---------------------- Configures a static (manual) IP.
 
-`iface <iface> inet dhcp`	Configures dynamic IP (gets it from a DHCP server).
+`iface <iface> inet dhcp` ------------------------ Configures dynamic IP (gets it from a DHCP server).
 
-`address`	Assigns an IP address.
+`address` ---------------------------------------- Assigns an IP address.
 
-`netmask`	Defines the subnet mask.
+`netmask` ---------------------------------------- Defines the subnet mask.
 
 ## Example Configuration:
 ```
@@ -339,17 +339,17 @@ sudo systemctl start isc-dhcp-server
 sudo systemctl enable isc-dhcp-server
 ```
 ## Key Notes
-Command	Purpose
+Command	--------------------------------- Purpose
 
-`apt-cache search dhcp`	Search available DHCP-related packages
+`apt-cache search dhcp`	----------------- Search available DHCP-related packages
 
-`dpkg -l`	grep dhcp`
+`dpkg -l` ------------------------------- grep dhcp`
 
-`apt-get install isc-dhcp-server`	Install the DHCP server
+`apt-get install isc-dhcp-server` ------- Install the DHCP server
 
-`systemctl start isc-dhcp-server`	Start the DHCP service
+`systemctl start isc-dhcp-server` ------- Start the DHCP service
 
-`systemctl status isc-dhcp-server`	Check if it’s running
+`systemctl status isc-dhcp-server` ------ Check if it’s running
 
 ## Result:
 Your system is now ready to configure DHCP ranges and assign IPs automatically to clients.
